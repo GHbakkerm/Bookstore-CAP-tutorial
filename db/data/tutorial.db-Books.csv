@@ -1,0 +1,11 @@
+ID,title,author_ID,genre,publishedAt,pages,price,createdAt,createdBy,modifiedAt,modifiedBy
+31170763-0712-4059-807a-3dfed9962988,Game of Thrones,George R.R. Martin,Fantasy,2008-11-19,70,20.04,2014-09-23T00:00:00.000Z,createdBy.1ut5g@example.com,2000-01-13T00:00:00.000Z,modifiedBy.1ut5g@example.net
+31170777-cc69-4fb5-967b-2782a5d216aa,Wheel of Time part 1,Robert Jordan,Fantasy,2018-07-01,6,20.86,2019-10-06T00:00:00.000Z,createdBy.1ut5h@example.com,2007-08-28T00:00:00.000Z,modifiedBy.1ut5h@example.com
+3117078b-62d2-4e07-81bc-9061da3f71f2,Wheel of Time part 2,Robert Jordan,Fantasy,2012-12-03,90,20.02,2012-06-22T00:00:00.000Z,createdBy.1ut5i@example.com,2020-06-18T00:00:00.000Z,modifiedBy.1ut5i@example.org
+31170794-4151-4384-b5df-28eb3332ee09,Wheel of Time part 3,Robert Jordan,Fantasy,2021-01-06,57,20.46,2005-12-09T00:00:00.000Z,createdBy.1ut5j@example.com,2010-05-20T00:00:00.000Z,modifiedBy.1ut5j@example.com
+31170803-1d0d-4fa7-988c-15b2b23ce3d0,Stormlight Archive part 1,Brandon Sanderson,Fantasy,2003-02-02,37,20.67,2011-12-06T00:00:00.000Z,createdBy.1ut5k@example.net,2000-02-09T00:00:00.000Z,modifiedBy.1ut5k@example.com
+3117081f-2373-4a38-ad3e-721be92c73a8,Stormlight Archive part 2,Brandon Sanderson,Fantasy,2011-12-05,80,25.31,2022-05-25T00:00:00.000Z,createdBy.1ut5l@example.com,2011-11-05T00:00:00.000Z,modifiedBy.1ut5l@example.com
+31170824-2aa6-45ce-b44c-66e155416898,Stormlight Archive part 3,Brandon Sanderson,Fantasy,2013-05-19,100,25.68,2009-07-11T00:00:00.000Z,createdBy.1ut5m@example.net,2009-08-07T00:00:00.000Z,modifiedBy.1ut5m@example.org
+3117083c-96c4-4c1f-b283-a096a34848f9,Stormlight Archive part 4,Brandon Sanderson,Fantasy,2009-10-11,27,25.72,2018-10-18T00:00:00.000Z,createdBy.1ut5n@example.net,2011-12-30T00:00:00.000Z,modifiedBy.1ut5n@example.com
+31170840-5fb7-4322-83e0-33651f7c1cb0,Stormlight Archive part 5,Brandon Sanderson,Fantasy,2016-03-10,81,25.14,2011-12-16T00:00:00.000Z,createdBy.1ut5o@example.org,2019-02-11T00:00:00.000Z,modifiedBy.1ut5o@example.net
+31170851-2b21-40e1-be52-a00f1966b2ad,Good Omens,Terry Pratchett,Fantasy,2022-09-23,25,19.64,2015-10-31T00:00:00.000Z,createdBy.1ut5p@example.org,2023-12-14T00:00:00.000Z,modifiedBy.1ut5p@example.org
