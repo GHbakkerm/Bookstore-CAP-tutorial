@@ -93,7 +93,7 @@ annotate service.Books with {
 };
 
 annotate service.Books with {
-    title @Common.Label : 'title'
+    title @Common.Label : 'Title'
 };
 
 annotate service.Authors with {
