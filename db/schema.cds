@@ -1,7 +1,4 @@
-using {
-    cuid,
-    managed
-} from '@sap/cds/common';
+using {cuid, managed} from '@sap/cds/common';
 
 namespace tutorial.db;
 
@@ -12,8 +9,22 @@ entity Books : cuid, managed {
     publishedAt : Date;
     pages       : Integer;
     price       : Decimal(9, 2);
+    stock       : Integer;
+    status      : Association to BookStatus;
     Chapters    : Composition of many Chapters
                       on Chapters.book = $self;
+}
+
+type BookStatusCode : String(1) enum {
+    Available = 'A';
+    Low_stock = 'L';
+    Unavailable = 'U';
+}
+
+entity BookStatus {
+    key code        : BookStatusCode;
+        criticality : Integer;
+        displayText : String;
 }
 
 entity Authors : cuid, managed {
@@ -25,6 +36,6 @@ entity Authors : cuid, managed {
 entity Chapters : cuid, managed {
     key book   : Association to Books;
         number : Integer;
-        title : String;
-        pages : Integer;
+        title  : String;
+        pages  : Integer;
 }
