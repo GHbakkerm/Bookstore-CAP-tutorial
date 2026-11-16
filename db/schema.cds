@@ -9,7 +9,7 @@ namespace tutorial.db;
 entity Books : cuid, managed {
     title       : String;
     author      : Association to Authors;
-    genre       : String;
+    genre       : Association to Genres;
     publishedAt : Date;
     pages       : Integer;
     price       : Decimal(9, 2);
@@ -19,6 +19,13 @@ entity Books : cuid, managed {
     Chapters    : Composition of many Chapters
                       on Chapters.book = $self;
 }
+
+entity Genres {
+    key code        : String;
+        description : String;
+}
+
+
 
 type BookStatusCode : String(1) enum {
     Available = 'A';
