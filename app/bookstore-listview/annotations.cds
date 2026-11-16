@@ -21,6 +21,11 @@ using BookstoreService as service from '../../srv/service';
             },
             {
                 $Type : 'UI.DataField',
+                Value : currency_code,
+                Label : 'currency_code',
+            },
+            {
+                $Type : 'UI.DataField',
                 Label : 'price',
                 Value : price,
             },
@@ -234,4 +239,8 @@ annotate service.BookStatus with {
         Common.Text : displayText,
         Common.Text.@UI.TextArrangement : #TextOnly,
 )};
+
+annotate service.Books with {
+    currency @Common.ValueListWithFixedValues : true
+};
 
