@@ -77,8 +77,13 @@ using BookstoreService as service from '../../srv/service';
         },
         {
             $Type : 'UI.DataField',
+            Label : 'Price',
+            Value : price,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : genre_code,
             Label : 'Genre',
-            Value : genre,
         },
         {
             $Type : 'UI.DataField',
@@ -89,11 +94,6 @@ using BookstoreService as service from '../../srv/service';
             $Type : 'UI.DataField',
             Label : 'Number of Pages',
             Value : pages,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'Price',
-            Value : price,
         },
         {
             $Type : 'UI.DataField',
