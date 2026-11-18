@@ -19,7 +19,7 @@ entity Books : cuid, managed {
     Chapters    : Composition of many Chapters
                       on Chapters.book = $self;
 }
-
+ 
 entity Genres {
     key code        : String;
         description : String;
