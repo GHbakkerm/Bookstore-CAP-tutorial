@@ -2,61 +2,95 @@ import { Books } from '#cds-models/BookstoreService'
 import { BookStatusCode } from '#cds-models/tutorial/db'
 import cds from '@sap/cds'
 
-export class BookstoreService extends cds.ApplicationService { init() {
+export class BookstoreService extends cds.ApplicationService {
+  init() {
 
-//const { Books, Authors, GenresVH, BookStatus, Chapters } = cds.entities('BookstoreService')
-  //const { Books } = cds.entities('BookstoreService')
+    //const { Books, Authors, GenresVH, BookStatus, Chapters } = cds.entities('BookstoreService')
+    //const { Books } = cds.entities('BookstoreService')
 
-  this.before (['READ'], Books, async (req) => {
-  //this.before (['CREATE', 'UPDATE'], Books, async (req) => {
-    //console.log('Before READ Books', req.data)
-    console.log('Before READ Books')
-  })
+    this.on('addStock', Books, async (req) => {
+      console.log(req.params)
+      const bookId = req.params[0].ID
+      console.log(bookId)
 
-  this.on ('READ', Books, async (req, next) => {
-    console.log('ON EVENT')
-    return next()
-  })
+      await UPDATE(Books)
+        .set({ stock: { '+=': 1 } })
+        .where({ ID: bookId })
+    })
 
-  this.after ('READ', Books, async (books, req) => {
-    for(const book of books){
-      //if(book.genre_code === 'Fiction'){
-      if(book.status_code === BookStatusCode.Low_stock){
-        //book.price = book.price * 0.8
-        book.price = '15.32'
-        book.title = book.title.concat(' -> Boek is in de aanbieding');
+    this.on('changePublishDate', Books, async (req) => {
+      console.log(req.params)
+      const bookId = req.params[0].ID
+      console.log(bookId)
+      const newDate = req.data.newDate
+
+      await UPDATE(Books)
+        .set({ publishedAt: newDate })
+        .where({ ID: bookId })
+    })
+
+    this.on('changeStatus', Books, async (req) => {
+      console.log(req.params)
+      const bookId = req.params[0].ID
+      console.log(bookId)
+      const newStatus = req.data.newStatus
+
+      await UPDATE(Books)
+        .set({ status_code: newStatus })
+        .where({ ID: bookId })
+    })
+
+    this.before(['READ'], Books, async (req) => {
+      //this.before (['CREATE', 'UPDATE'], Books, async (req) => {
+      //console.log('Before READ Books', req.data)
+      console.log('Before READ Books')
+    })
+
+    this.on('READ', Books, async (req, next) => {
+      console.log('ON EVENT')
+      return next()
+    })
+
+    this.after('READ', Books, async (books, req) => {
+      for (const book of books) {
+        //if(book.genre_code === 'Fiction'){
+        if (book.status_code === BookStatusCode.Low_stock) {
+          //book.price = book.price * 0.8
+          book.price = '15.32';
+        //  book.title = book.title.concat(' -> Boek is in de aanbieding');
+        }
       }
-    }
-    console.log('After READ')
-  })
+      console.log('After READ')
+    })
 
 
-  // Nog niet nodig:
-  //this.before (['CREATE', 'UPDATE'], Authors, async (req) => {
-//    console.log('Before CREATE/UPDATE Authors', req.data)
-//  })
-//  this.after ('READ', Authors, async (authors, req) => {
+    // Nog niet nodig:
+    //this.before (['CREATE', 'UPDATE'], Authors, async (req) => {
+    //    console.log('Before CREATE/UPDATE Authors', req.data)
+    //  })
+    //  this.after ('READ', Authors, async (authors, req) => {
     //console.log('After READ Authors', authors)
-  //})
-  //this.before (['CREATE', 'UPDATE'], GenresVH, async (req) => {
-//    console.log('Before CREATE/UPDATE GenresVH', req.data)
-//  })
-//  this.after ('READ', GenresVH, async (genresVH, req) => {
+    //})
+    //this.before (['CREATE', 'UPDATE'], GenresVH, async (req) => {
+    //    console.log('Before CREATE/UPDATE GenresVH', req.data)
+    //  })
+    //  this.after ('READ', GenresVH, async (genresVH, req) => {
     //console.log('After READ GenresVH', genresVH)
-  //})
-  //this.before (['CREATE', 'UPDATE'], BookStatus, async (req) => {
-//    console.log('Before CREATE/UPDATE BookStatus', req.data)
-//  })
-//  this.after ('READ', BookStatus, async (bookStatus, req) => {
+    //})
+    //this.before (['CREATE', 'UPDATE'], BookStatus, async (req) => {
+    //    console.log('Before CREATE/UPDATE BookStatus', req.data)
+    //  })
+    //  this.after ('READ', BookStatus, async (bookStatus, req) => {
     //console.log('After READ BookStatus', bookStatus)
-  //})
-  //this.before (['CREATE', 'UPDATE'], Chapters, async (req) => {
-//    console.log('Before CREATE/UPDATE Chapters', req.data)
-//  })
-//  this.after ('READ', Chapters, async (chapters, req) => {
+    //})
+    //this.before (['CREATE', 'UPDATE'], Chapters, async (req) => {
+    //    console.log('Before CREATE/UPDATE Chapters', req.data)
+    //  })
+    //  this.after ('READ', Chapters, async (chapters, req) => {
     //console.log('After READ Chapters', chapters)
-  //})
+    //})
 
 
-  return super.init()
-}}
+    return super.init()
+  }
+}

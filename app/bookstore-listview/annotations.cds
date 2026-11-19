@@ -1,5 +1,24 @@
 using BookstoreService as service from '../../srv/service';
- annotate service.Books with @odata.draft.enabled;
+ annotate service.Books with @(
+    odata.draft.enabled,
+    UI.Identification : [
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'BookstoreService.addStock',
+            Label : 'Add Stock',
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'BookstoreService.changePublishDate',
+            Label : 'Change Publish Date',
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'BookstoreService.changeStatus',
+            Label : 'Change Status',
+        },
+    ],
+);
  annotate service.Books with @(
     UI.FieldGroup #GeneratedGroup : {
         $Type : 'UI.FieldGroupType',
@@ -40,6 +59,11 @@ using BookstoreService as service from '../../srv/service';
             {
                 $Type : 'UI.DataField',
                 Value : author_ID,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : stock,
+                Label : 'stock',
             },
         ],
     },
@@ -99,6 +123,11 @@ using BookstoreService as service from '../../srv/service';
             $Type : 'UI.DataField',
             Value : stock,
             Label : 'Stock',
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'BookstoreService.addStock',
+            Label : 'Add Stock',
         },
     ],
     UI.SelectionFields : [
