@@ -3,25 +3,27 @@
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
+    "@cap-js/attachments": "^4.0.0",
     "@sap/cds": "^10",
     "@sap/cds-common-content": "^3.2.0"
   },
   "devDependencies": {
-    "@cap-js/cds-typer": "^0.41.1",
+    "@cap-js/cds-typer": ">=0.1",
     "@cap-js/sqlite": "^3",
-    "cds-plugin-ui5": "^0.13.2",
-    "@cap-js/cds-typer": ">=0.1"
+    "cds-plugin-ui5": "^0.13.2"
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-bookstore-listview": "cds watch --open bookstorelistview/index.html?sap-ui-xx-viewCache=false --livereload false"
+    "watch-bookstore-listview": "cds watch --open bookstorelistview/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-authors-listview": "cds watch --open authorslistview/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "workspaces": [
     "app/*"
   ],
   "sapux": [
-    "app/bookstore-listview"
+    "app/bookstore-listview",
+    "app/authors-listview"
   ],
   "imports": {
     "#cds-models/*": "./@cds-models/*/index.js"

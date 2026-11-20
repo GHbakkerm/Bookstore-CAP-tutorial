@@ -221,6 +221,10 @@ annotate service.Books with {
     title @Common.Label : 'Title'
 };
 
+annotate service.Authors with @(
+    odata.draft.enabled
+);
+
 annotate service.Authors with {
     name @Common.Label : 'author/name'
 };
