@@ -130,6 +130,11 @@ using BookstoreService as service from '../../srv/service';
             Action : 'BookstoreService.addStock',
             Label : 'Add Stock',
         },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'BookstoreService.EntityContainer/addDiscount',
+            Label : 'Add 10% Discount',
+        },
     ],
     UI.SelectionFields : [
         title,

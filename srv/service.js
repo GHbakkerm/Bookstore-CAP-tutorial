@@ -1,12 +1,21 @@
 import { Books } from '#cds-models/BookstoreService'
 import { BookStatusCode } from '#cds-models/tutorial/db'
 import cds from '@sap/cds'
+//import { UPDATE } from '@sap/cds/lib/ql/cds-ql.js'
 
 export class BookstoreService extends cds.ApplicationService {
   init() {
 
     //const { Books, Authors, GenresVH, BookStatus, Chapters } = cds.entities('BookstoreService')
     //const { Books } = cds.entities('BookstoreService')
+
+    this.on('addDiscount', async () => {
+      console.log('addDiscount is pushed')
+      //console.log(Books)
+      await UPDATE(Books).set({ price: { func: 'ROUND', args: [{ xpr: [{ ref: ['price'] }, '*', { val: 0.9 }] }, { val: 2 }] } })
+      await UPDATE(Books).set({ title: { xpr: [{ ref: ['title'] }, '||', { val: ' - Discounted!' }] } })
+      //UPDATE(Books).set({ stock: { '+=': 1 } })
+    })
 
     this.on('addStock', Books, async (req) => {
       console.log(req.params)
@@ -55,8 +64,8 @@ export class BookstoreService extends cds.ApplicationService {
       for (const book of books) {
         if (book.status_code === BookStatusCode.Low_stock) {
           //book.price = book.price * 0.8
-          book.price = '15.32';
-        //  book.title = book.title.concat(' -> Boek is in de aanbieding');
+          //book.price = '15.32';
+          //  book.title = book.title.concat(' -> Boek is in de aanbieding');
         }
       }
       console.log('After READ')

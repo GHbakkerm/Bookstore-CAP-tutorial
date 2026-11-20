@@ -3,11 +3,11 @@ using {tutorial.db as db} from '../db/schema';
 service BookstoreService {
     entity Books      as projection on db.Books
         actions {
-            @Common.SideEffects : { TargetProperties:['stock'] }
+            @Common.SideEffects: {TargetProperties: ['stock']}
             action addStock();
             action changePublishDate(newDate: Date);
             //@Common.SideEffects : { TargetProperties:['status_code'] }
-            @Common.SideEffects : { TargetEntities: ['in/status'] }
+            @Common.SideEffects: {TargetEntities: ['in/status']}
             action changeStatus( @(Common: {
                                      ValueListWithFixedValues: true,
                                      Label                   : 'New Status',
@@ -23,6 +23,9 @@ service BookstoreService {
                                  })
                                  newStatus: String);
         };
+
+    @Common.SideEffects: {TargetEntities: ['/BookstoreService.EntityContainer/Books']}
+    action addDiscount();
 
     entity Authors    as projection on db.Authors;
     entity Chapters   as projection on db.Chapters;
