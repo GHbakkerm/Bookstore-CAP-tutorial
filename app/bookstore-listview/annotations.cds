@@ -51,6 +51,7 @@ using BookstoreService as service from '../../srv/service';
             {
                 $Type : 'UI.DataField',
                 Value : status_code,
+                Criticality : status.criticality,
             },
             {
                 $Type : 'UI.DataField',

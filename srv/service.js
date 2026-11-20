@@ -53,7 +53,6 @@ export class BookstoreService extends cds.ApplicationService {
 
     this.after('READ', Books, async (books, req) => {
       for (const book of books) {
-        //if(book.genre_code === 'Fiction'){
         if (book.status_code === BookStatusCode.Low_stock) {
           //book.price = book.price * 0.8
           book.price = '15.32';
